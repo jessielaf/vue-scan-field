@@ -1,10 +1,12 @@
 {
+  "version": "0.0.1",
   "name": "vue-scan-field",
-  "version": "0.1.0",
-  "private": true,
+  "description": "Vue scan field: streamline your backend and frontend validation",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
+    "build:umd": "rollup --config rollup.config.js --format umd --file dist/vue-scan-field.umd.js",
+    "build:es": "rollup --config rollup.config.js --format es --file dist/vue-scan-field.esm.js",
+    "build:unpkg": "rollup --config rollup.config.js --format iife --file dist/vue-scan-field.min.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -12,12 +14,17 @@
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^11.1.0",
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "rollup": "^1.14.4",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-vue": "^4.7.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -38,5 +45,21 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "main": "dist/vue-scan-field.umd.js",
+  "module": "dist/vue-scan-field.esm.js",
+  "unpkg": "dist/vue-scan-field.min.js",
+  "browser": {
+    "./sfc": "src/vue-scan-field.vue"
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "attributes.json",
+    "tags.json"
+  ],
+  "vetur": {
+    "tags": "tags.json",
+    "attributes": "attributes.json"
+  }
 }
