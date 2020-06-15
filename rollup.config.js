@@ -4,7 +4,7 @@ import { terser } from 'rollup-plugin-terser'
 import buble from '@rollup/plugin-buble'
 
 export default {
-  input: 'src/entry.js',
+  input: 'src/main.js',
   output: {
     name: 'VueScanField',
     exports: 'named'

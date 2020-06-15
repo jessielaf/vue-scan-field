@@ -1,5 +1,14 @@
 import { ValidationProvider } from 'vee-validate'
-import { defineComponent, createElement as h, ref, watch } from '@vue/composition-api'
+import {
+  defineComponent,
+  createElement as h,
+  ref,
+  watch
+} from '@vue/composition-api'
+import VTextField from 'vuetify/lib/components/VTextField'
+import VTextarea from 'vuetify/lib/components/VTextarea'
+import VCheckbox from 'vuetify/lib/components/VCheckbox'
+import VAutocomplete from 'vuetify/lib/components/VAutocomplete'
 
 export default defineComponent({
   props: {
@@ -17,20 +26,24 @@ export default defineComponent({
     }
   },
   setup(props, { attrs }) {
-    const typeField = ref('v-text-field')
+    const typeField = ref(VTextField)
 
     const calculate = () => {
       // Change element if defined
       if (props.field.attributes && props.field.attributes.element) {
         typeField.value = {
-          textarea: 'v-text-area',
-          checkbox: 'v-check-box',
-          select: 'v-autocomplete'
+          textarea: VTextarea,
+          checkbox: VCheckbox,
+          select: VAutocomplete
         }[props.field.attributes.element]
       }
 
       // Add items if it is a select and all the options are defined
-      if (props.field.attributes.element === 'select' && props.field.attributes.options && props.field.validator.oneOf) {
+      if (
+        props.field.attributes.element === 'select' &&
+        props.field.attributes.options &&
+        props.field.validator.oneOf
+      ) {
         attrs.items = props.field.attributes.options.map((element, index) => ({
           text: element,
           value: props.field.validator.oneOf[index]

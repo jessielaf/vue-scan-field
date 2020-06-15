@@ -1,0 +1,211 @@
+{
+  "password": {
+    "validator": {
+      "required": true,
+      "max": 128
+    },
+    "attributes": {}
+  },
+  "lastLogin": {
+    "validator": {},
+    "attributes": {}
+  },
+  "isSuperuser": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox"
+    }
+  },
+  "username": {
+    "validator": {
+      "required": true,
+      "max": 150
+    },
+    "attributes": {}
+  },
+  "isStaff": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox"
+    }
+  },
+  "isActive": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox",
+      "default": "True"
+    }
+  },
+  "dateJoined": {
+    "validator": {},
+    "attributes": {}
+  },
+  "deletedOn": {
+    "validator": {},
+    "attributes": {}
+  },
+  "id": {
+    "validator": {
+      "max": 32
+    },
+    "attributes": {}
+  },
+  "firstName": {
+    "validator": {
+      "required": true,
+      "max": 30
+    },
+    "attributes": {}
+  },
+  "lastName": {
+    "validator": {
+      "required": true,
+      "max": 150
+    },
+    "attributes": {}
+  },
+  "email": {
+    "validator": {
+      "required": true,
+      "max": 254,
+      "email": true
+    },
+    "attributes": {
+      "type": "email"
+    }
+  },
+  "role": {
+    "validator": {
+      "required": true,
+      "max": 55,
+      "oneOf": [
+        "TEMP_WORKER",
+        "CLIENT",
+        "COMPANY_EMPLOYEE"
+      ]
+    },
+    "attributes": {
+      "element": "select",
+      "options": [
+        "Temp Worker",
+        "Client",
+        "Company employee"
+      ]
+    }
+  },
+  "company": {
+    "validator": {},
+    "attributes": {}
+  },
+  "dateOfBirth": {
+    "validator": {},
+    "attributes": {}
+  },
+  "client": {
+    "validator": {},
+    "attributes": {}
+  },
+  "maxAmountOfHours": {
+    "validator": {},
+    "attributes": {
+      "type": "number"
+    }
+  },
+  "profileImage": {
+    "validator": {},
+    "attributes": {
+      "element": "textarea"
+    }
+  },
+  "telephoneNumber": {
+    "validator": {
+      "max": 20
+    },
+    "attributes": {}
+  },
+  "language": {
+    "validator": {
+      "max": 8,
+      "oneOf": [
+        "nl",
+        "en"
+      ]
+    },
+    "attributes": {
+      "element": "select",
+      "options": [
+        "nl",
+        "en"
+      ],
+      "default": "en"
+    }
+  },
+  "location": {
+    "validator": {
+      "max": 263
+    },
+    "attributes": {}
+  },
+  "locationLat": {
+    "validator": {},
+    "attributes": {}
+  },
+  "locationLng": {
+    "validator": {},
+    "attributes": {}
+  },
+  "notificationNewShift": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox",
+      "default": "True"
+    }
+  },
+  "notificationShiftMarket": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox",
+      "default": "True"
+    }
+  },
+  "notificationNewShiftMarket": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox",
+      "default": "True"
+    }
+  },
+  "notificationHourRegistration": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox",
+      "default": "True"
+    }
+  },
+  "notificationHourRegistrationDisagreement": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox",
+      "default": "True"
+    }
+  },
+  "notificationShiftChange": {
+    "validator": {},
+    "attributes": {
+      "element": "checkbox",
+      "default": "True"
+    }
+  },
+  "integrationGoogleToken": {
+    "validator": {},
+    "attributes": {
+      "element": "textarea"
+    }
+  },
+  "integrationGoogleCalendarId": {
+    "validator": {
+      "max": 1024
+    },
+    "attributes": {}
+  }
+}
