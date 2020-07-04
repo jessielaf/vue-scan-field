@@ -1,16 +1,20 @@
-import { ValidationProvider } from 'vee-validate'
-import {
-  defineComponent,
-  createElement as h,
-  ref,
-  watch
-} from '@vue/composition-api'
+<template lang="pug">
+  ValidationProvider(:name="label" :vid="id" :rules="field.validator || ''" v-slot="{ errors }" slim)
+    component(:is="typeField" v-bind="$attrs" v-on="$listeners" :id="id" :name="id" :label="label" :errorMessages="errors")
+</template>
+
+<script>
+import { ref, watch } from '@vue/composition-api'
 import VTextField from 'vuetify/lib/components/VTextField'
 import VTextarea from 'vuetify/lib/components/VTextarea'
 import VCheckbox from 'vuetify/lib/components/VCheckbox'
 import VAutocomplete from 'vuetify/lib/components/VAutocomplete'
+import { ValidationProvider } from 'vee-validate'
 
-export default defineComponent({
+export default {
+  components: {
+    ValidationProvider
+  },
   props: {
     id: {
       type: String,
@@ -55,31 +59,6 @@ export default defineComponent({
     watch(() => props.field, calculate)
 
     return { typeField }
-  },
-  render() {
-    return h(ValidationProvider, {
-      attrs: {
-        rules: this.field.validator || '',
-        name: this.label,
-        vid: this.id,
-        slim: true
-      },
-      scopedSlots: {
-        default: props => {
-          return h(this.typeField, {
-            attrs: {
-              id: this.id,
-              name: this.id,
-              label: this.label,
-              errorMessages: props.errors,
-              ...this.$attrs
-            },
-            listeners: {
-              ...this.$listeners
-            }
-          })
-        }
-      }
-    })
   }
-})
+}
+</script>

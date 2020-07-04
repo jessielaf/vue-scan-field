@@ -1,7 +1,7 @@
 <template>
-  <v-app>
-    <v-content>
-      <v-container>
+  <VApp>
+    <VMain>
+      <VContainer>
         <h1>Test</h1>
         <ValidationObserver
           ref="formValidator"
@@ -16,21 +16,29 @@
             :label="name"
             v-model="model[name]"
           />
-          <v-btn color="success" type="submit">Save</v-btn>
+          <VBtn color="success" type="submit">Save</VBtn>
         </ValidationObserver>
-      </v-container>
-    </v-content>
-  </v-app>
+      </VContainer>
+    </VMain>
+  </VApp>
 </template>
 
 <script>
 import { ref } from '@vue/composition-api'
 import validator from './validator.json'
 import { ValidationObserver } from 'vee-validate'
+import VApp from 'vuetify/lib/components/VApp/VApp'
+import VMain from 'vuetify/lib/components/VMain/VMain'
+import VContainer from 'vuetify/lib/components/VGrid/VContainer'
+import VBtn from 'vuetify/lib/components/VBtn/VBtn'
 
 export default {
   components: {
-    ValidationObserver
+    ValidationObserver,
+    VApp,
+    VMain,
+    VContainer,
+    VBtn
   },
   setup() {
     const formValidator = ref(null)

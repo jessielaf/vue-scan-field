@@ -1,4 +1,4 @@
-import Field from './ScanField'
+import Field from './ScanField.vue'
 
 export default {
   install: (Vue, { field = 'ScanField' } = {}) => {
