@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.1.0",
   "name": "vue-scan-field",
   "description": "Vue scan field: streamline your backend and frontend validation",
   "scripts": {
