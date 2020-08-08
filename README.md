@@ -49,4 +49,12 @@ import { ScanField } from 'vue-scan-field/ScanField'
 </template>
 ```
 
-The most noticeable attribute on `ScanField` is `:field`. This is the field from the validator of the `scan models` package. Of course all the 
+#### Date component
+
+The date component is custom made so it can be used as `ScanField`. To pass properties to the `v-date-picker` you can do this via the attribute `:pickerAttrs`
+
+## Without scan models
+
+The most noticeable attribute on `ScanField` is `:field`. This is the field from the validator of the `scan models` package. You can also use this package without the `scan models` package.
+
+TODO: Specifications for creating your own field json files. 

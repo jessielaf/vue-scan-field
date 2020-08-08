@@ -27,10 +27,7 @@
 import { ref } from '@vue/composition-api'
 import validator from './validator.json'
 import { ValidationObserver } from 'vee-validate'
-import VApp from 'vuetify/lib/components/VApp/VApp'
-import VMain from 'vuetify/lib/components/VMain/VMain'
-import VContainer from 'vuetify/lib/components/VGrid/VContainer'
-import VBtn from 'vuetify/lib/components/VBtn/VBtn'
+import { VApp, VMain, VContainer, VBtn } from 'vuetify/lib/components'
 
 export default {
   components: {

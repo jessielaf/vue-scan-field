@@ -1,21 +1,4 @@
 {
-  "password": {
-    "validator": {
-      "required": true,
-      "max": 128
-    },
-    "attributes": {}
-  },
-  "lastLogin": {
-    "validator": {},
-    "attributes": {}
-  },
-  "isSuperuser": {
-    "validator": {},
-    "attributes": {
-      "element": "checkbox"
-    }
-  },
   "username": {
     "validator": {
       "required": true,
@@ -35,20 +18,6 @@
       "element": "checkbox",
       "default": "True"
     }
-  },
-  "dateJoined": {
-    "validator": {},
-    "attributes": {}
-  },
-  "deletedOn": {
-    "validator": {},
-    "attributes": {}
-  },
-  "id": {
-    "validator": {
-      "max": 32
-    },
-    "attributes": {}
   },
   "firstName": {
     "validator": {
@@ -93,17 +62,10 @@
       ]
     }
   },
-  "company": {
-    "validator": {},
-    "attributes": {}
-  },
   "dateOfBirth": {
-    "validator": {},
-    "attributes": {}
-  },
-  "client": {
-    "validator": {},
-    "attributes": {}
+    "attributes": {
+      "element": "date"
+    }
   },
   "maxAmountOfHours": {
     "validator": {},
@@ -116,12 +78,6 @@
     "attributes": {
       "element": "textarea"
     }
-  },
-  "telephoneNumber": {
-    "validator": {
-      "max": 20
-    },
-    "attributes": {}
   },
   "language": {
     "validator": {
@@ -139,73 +95,5 @@
       ],
       "default": "en"
     }
-  },
-  "location": {
-    "validator": {
-      "max": 263
-    },
-    "attributes": {}
-  },
-  "locationLat": {
-    "validator": {},
-    "attributes": {}
-  },
-  "locationLng": {
-    "validator": {},
-    "attributes": {}
-  },
-  "notificationNewShift": {
-    "validator": {},
-    "attributes": {
-      "element": "checkbox",
-      "default": "True"
-    }
-  },
-  "notificationShiftMarket": {
-    "validator": {},
-    "attributes": {
-      "element": "checkbox",
-      "default": "True"
-    }
-  },
-  "notificationNewShiftMarket": {
-    "validator": {},
-    "attributes": {
-      "element": "checkbox",
-      "default": "True"
-    }
-  },
-  "notificationHourRegistration": {
-    "validator": {},
-    "attributes": {
-      "element": "checkbox",
-      "default": "True"
-    }
-  },
-  "notificationHourRegistrationDisagreement": {
-    "validator": {},
-    "attributes": {
-      "element": "checkbox",
-      "default": "True"
-    }
-  },
-  "notificationShiftChange": {
-    "validator": {},
-    "attributes": {
-      "element": "checkbox",
-      "default": "True"
-    }
-  },
-  "integrationGoogleToken": {
-    "validator": {},
-    "attributes": {
-      "element": "textarea"
-    }
-  },
-  "integrationGoogleCalendarId": {
-    "validator": {
-      "max": 1024
-    },
-    "attributes": {}
   }
 }

@@ -8,11 +8,12 @@
     "build:es": "rollup --config rollup.config.js --format es --file dist/vue-scan-field.esm.js",
     "build:unpkg": "rollup --config rollup.config.js --format iife --file dist/vue-scan-field.min.js",
     "lint": "vue-cli-service lint",
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve tests/main.js",
     "prepare": "install-peers"
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "date-fns": "^2.15.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

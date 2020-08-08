@@ -5,11 +5,14 @@
 
 <script>
 import { ref, watch } from '@vue/composition-api'
-import VTextField from 'vuetify/lib/components/VTextField'
-import VTextarea from 'vuetify/lib/components/VTextarea'
-import VCheckbox from 'vuetify/lib/components/VCheckbox'
-import VAutocomplete from 'vuetify/lib/components/VAutocomplete'
+import {
+  VTextField,
+  VTextarea,
+  VCheckbox,
+  VAutocomplete
+} from 'vuetify/lib/components'
 import { ValidationProvider } from 'vee-validate'
+import DatePicker from '@/input-components/DatePicker'
 
 export default {
   components: {
@@ -38,7 +41,8 @@ export default {
         typeField.value = {
           textarea: VTextarea,
           checkbox: VCheckbox,
-          select: VAutocomplete
+          select: VAutocomplete,
+          date: DatePicker
         }[props.field.attributes.element]
       }
 
