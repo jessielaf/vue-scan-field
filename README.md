@@ -5,11 +5,11 @@ This module goes hand in hand with [Django scan models](https://github.com/jessi
 
 ## Install
 
-```
+```shell script
 npm install vue-scan-field
 ```
 or
-```
+```shell script
 yarn add vue-scan-field
 ```
 
@@ -26,7 +26,7 @@ Vue.use(ScanField)
 ```
 
 The default name for the field is `ScanField`. If you want to change this globally you can pass it as to the options.
-```
+```js
 import Vue from 'vue'
 import ScanField from 'vue-scan-field'
 
