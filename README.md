@@ -1,5 +1,5 @@
 # Vue scan field
-Use scanned models to generate forms based on your backend models
+Use scanned backend models to generate validation and forms
 
 This module goes hand in hand with [Django scan models](https://github.com/jessielaf/django-scan-models).
 
