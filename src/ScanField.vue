@@ -5,14 +5,19 @@
 
 <script>
 import { ref, watch } from '@vue/composition-api'
-import {
-  VTextField,
-  VTextarea,
-  VCheckbox,
-  VAutocomplete
-} from 'vuetify/lib/components'
 import { ValidationProvider } from 'vee-validate'
-import DatePicker from '@/input-components/DatePicker'
+
+const componentMapping = (function() {
+  if (require.resolve('vuetify')) {
+    return {
+      text_field: import('vuetify/lib/components/VTextField'),
+      textarea: import('vuetify/lib/components/VTextarea'),
+      checkbox: import('vuetify/lib/components/VCheckbox/VCheckbox'),
+      select: import('vuetify/lib/components/VAutocomplete'),
+      date: import('@/input-components/vuetify/DatePicker')
+    }
+  }
+})()
 
 export default {
   components: {
@@ -33,19 +38,13 @@ export default {
     }
   },
   setup(props, { attrs }) {
-    const typeField = ref(VTextField)
+    const typeField = ref({ render: () => '' })
+
+    componentMapping[props.field.attributes.element].then(
+      m => (typeField.value = m.default)
+    )
 
     const calculate = () => {
-      // Change element if defined
-      if (props.field.attributes && props.field.attributes.element) {
-        typeField.value = {
-          textarea: VTextarea,
-          checkbox: VCheckbox,
-          select: VAutocomplete,
-          date: DatePicker
-        }[props.field.attributes.element]
-      }
-
       // Add items if it is a select and all the options are defined
       if (
         props.field.attributes.element === 'select' &&

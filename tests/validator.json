@@ -4,7 +4,9 @@
       "required": true,
       "max": 150
     },
-    "attributes": {}
+    "attributes": {
+      "element": "text_field"
+    }
   },
   "isStaff": {
     "validator": {},
@@ -24,14 +26,19 @@
       "required": true,
       "max": 30
     },
-    "attributes": {}
+    "attributes": {
+      "element": "text_field"
+    }
   },
   "lastName": {
     "validator": {
       "required": true,
       "max": 150
     },
-    "attributes": {}
+    "attributes": {
+      "element": "text_field"
+
+    }
   },
   "email": {
     "validator": {
@@ -40,6 +47,7 @@
       "email": true
     },
     "attributes": {
+      "element": "text_field",
       "type": "email"
     }
   },
@@ -70,6 +78,7 @@
   "maxAmountOfHours": {
     "validator": {},
     "attributes": {
+      "element": "text_field",
       "type": "number"
     }
   },
