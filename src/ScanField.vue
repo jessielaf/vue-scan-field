@@ -1,26 +1,16 @@
 <template lang="pug">
-  ValidationProvider(:name="label" :vid="id" :rules="field.validator || ''" v-slot="{ errors }" slim)
-    component(:is="typeField" v-bind="$attrs" v-on="$listeners" :id="id" :name="id" :label="label" :errorMessages="errors")
+  ValidationProvider(v-if="typeField" :name="label" :vid="id" :rules="field.validator || ''" v-slot="{ errors }" slim)
+    component(:is="typeField" v-bind="parse(typeField, errors)" v-on="$listeners" :id="id" :name="id" :label="label")
+  NotSupported(v-else :field="field")
 </template>
 
 <script>
-import { ref, watch } from '@vue/composition-api'
 import { ValidationProvider } from 'vee-validate'
-
-const componentMapping = (function() {
-  if (require.resolve('vuetify')) {
-    return {
-      text_field: import('vuetify/lib/components/VTextField'),
-      textarea: import('vuetify/lib/components/VTextarea'),
-      checkbox: import('vuetify/lib/components/VCheckbox/VCheckbox'),
-      select: import('vuetify/lib/components/VAutocomplete'),
-      date: import('@/input-components/vuetify/DatePicker')
-    }
-  }
-})()
+import NotSupported from '@/input-components/NotSupported'
 
 export default {
   components: {
+    NotSupported,
     ValidationProvider
   },
   props: {
@@ -37,31 +27,40 @@ export default {
       default: ''
     }
   },
-  setup(props, { attrs }) {
-    const typeField = ref({ render: () => '' })
-
-    componentMapping[props.field.attributes.element].then(
-      m => (typeField.value = m.default)
-    )
-
-    const calculate = () => {
+  data() {
+    return {
+      typeField: this.$scanField.frameworkMapping.components[
+        this.field.attributes.element || 'text_field'
+      ],
+      parse(typeField, errors) {
+        return {
+          ...this.$scanField.frameworkMapping.getAttrs(typeField, errors)
+        }
+      }
+    }
+  },
+  methods: {
+    calculate(field) {
       // Add items if it is a select and all the options are defined
       if (
-        props.field.attributes.element === 'select' &&
-        props.field.attributes.options &&
-        props.field.validator.oneOf
+        field.attributes.element === 'select' &&
+        field.attributes.options &&
+        field.validator.oneOf
       ) {
-        attrs.items = props.field.attributes.options.map((element, index) => ({
+        this.attrs.items = field.attributes.options.map((element, index) => ({
           text: element,
-          value: props.field.validator.oneOf[index]
+          value: this.field.validator.oneOf[index]
         }))
       }
     }
-
-    calculate()
-    watch(() => props.field, calculate)
-
-    return { typeField }
+  },
+  created() {
+    this.calculate(this.field)
+  },
+  watch: {
+    field(val) {
+      this.calculate(val)
+    }
   }
 }
 </script>
