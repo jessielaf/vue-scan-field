@@ -1,15 +1,24 @@
 import Field from './ScanField.vue'
-import getFrameworkMapping from '@/input-components/main'
 
 export default {
   install: (Vue, { field = 'ScanField', framework = 'vuetify' } = {}) => {
-    getFrameworkMapping(framework).then(frameworkMapping => {
+    import('@/input-components/' + framework).then(module => {
       Vue.prototype.$scanField = {
         framework,
-        frameworkMapping
+        ...module.globals
       }
 
+      Field.components = { ...Field.components, ...module.components }
       Vue.component(field, Field)
     })
+    // const { components, globals } = require('@/input-components/' + framework)
+    //
+    // Vue.prototype.$scanField = {
+    //   framework,
+    //   ...globals
+    // }
+    //
+    // Field.components = { ...Field.components, ...components }
+    // Vue.component(field, Field)
   }
 }

@@ -1,6 +1,6 @@
 <template lang="pug">
-  ValidationProvider(v-if="typeField" :name="label" :vid="id" :rules="field.validator || ''" v-slot="{ errors }" slim)
-    component(:is="typeField" v-bind="parse(typeField, errors)" v-on="$listeners" :id="id" :name="id" :label="label")
+  ValidationProvider(v-if="field.attributes.element" :name="label" :vid="id" :rules="field.validator || ''" v-slot="{ errors }" slim)
+    component(:is="field.attributes.element" v-bind="parse($attrs, field.attributes.element, errors)" v-on="$listeners" :id="id" :name="id" :label="label")
   NotSupported(v-else :field="field")
 </template>
 
@@ -27,18 +27,6 @@ export default {
       default: ''
     }
   },
-  data() {
-    return {
-      typeField: this.$scanField.frameworkMapping.components[
-        this.field.attributes.element || 'text_field'
-      ],
-      parse(typeField, errors) {
-        return {
-          ...this.$scanField.frameworkMapping.getAttrs(typeField, errors)
-        }
-      }
-    }
-  },
   methods: {
     calculate(field) {
       // Add items if it is a select and all the options are defined
@@ -51,6 +39,12 @@ export default {
           text: element,
           value: this.field.validator.oneOf[index]
         }))
+      }
+    },
+    parse(attrs, typeField, errors) {
+      return {
+        ...attrs,
+        ...this.$scanField.getAttrs(typeField, errors)
       }
     }
   },
