@@ -7,7 +7,7 @@ import alias from '@rollup/plugin-alias'
 import resolve from '@rollup/plugin-node-resolve'
 
 const customResolver = resolve({
-  extensions: ['.mjs', '.js', '.vue', '.jsx', '.json', '.sass', '.scss']
+  extensions: ['.mjs', '.js', '.vue', '.jsx', '.json', '.sass', '.scss', '.ts']
 })
 const projectRootDir = path.resolve(__dirname)
 
@@ -34,7 +34,10 @@ export default {
       }
     }),
     buble({
-      objectAssign: 'Object.assign'
+      objectAssign: 'Object.assign',
+      transforms: {
+        asyncAwait: false
+      }
     }),
     terser()
   ]

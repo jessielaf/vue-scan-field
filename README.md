@@ -50,7 +50,7 @@ import { ScanField } from 'vue-scan-field/ScanField'
 </template>
 ```
 
-#### Date component
+#### Vuetify date component
 
 The date component is custom made so it can be used as `ScanField`. To pass properties to the `v-date-picker` you can do this via the attribute `:pickerAttrs`
 
