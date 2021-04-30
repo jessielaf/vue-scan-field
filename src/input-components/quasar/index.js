@@ -2,11 +2,11 @@ import { QCheckbox, QInput, QSelect } from 'quasar'
 
 export default {
   components: {
-    text_field: QInput,
-    textarea: QInput,
-    checkbox: QCheckbox,
-    select: QSelect,
-    date: () => null
+    scan_text_field: QInput,
+    scan_textarea: QInput,
+    scan_checkbox: QCheckbox,
+    scan_select: QSelect,
+    scan_date: () => null
   },
   globals: {
     getAttrs: (typeField, errors) => {

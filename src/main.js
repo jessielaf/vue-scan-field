@@ -1,24 +1,20 @@
 import Field from './ScanField.vue'
+import quasar from '@/input-components/quasar'
+import vuetify from '@/input-components/vuetify'
 
 export default {
   install: (Vue, { field = 'ScanField', framework = 'vuetify' } = {}) => {
-    import('@/input-components/' + framework).then(module => {
-      Vue.prototype.$scanField = {
-        framework,
-        ...module.globals
-      }
+    let frameworkMapping = vuetify
+    if (framework === 'quasar') {
+      frameworkMapping = quasar
+    }
 
-      Field.components = { ...Field.components, ...module.components }
-      Vue.component(field, Field)
-    })
-    // const { components, globals } = require('@/input-components/' + framework)
-    //
-    // Vue.prototype.$scanField = {
-    //   framework,
-    //   ...globals
-    // }
-    //
-    // Field.components = { ...Field.components, ...components }
-    // Vue.component(field, Field)
+    Vue.prototype.$scanField = {
+      framework,
+      ...frameworkMapping.globals
+    }
+
+    Field.components = { ...Field.components, ...frameworkMapping.components }
+    Vue.component(field, Field)
   }
 }

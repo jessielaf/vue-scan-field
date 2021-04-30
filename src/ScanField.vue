@@ -1,6 +1,6 @@
 <template lang="pug">
   ValidationProvider(v-if="field.attributes.element" :name="label" :vid="id" :rules="field.validator || ''" v-slot="{ errors }" slim)
-    component(:is="field.attributes.element" v-bind="parse($attrs, field.attributes.element, errors)" v-on="$listeners" :id="id" :name="id" :label="label")
+    component(:is="'scan_' + field.attributes.element" v-bind="parse($attrs, field.attributes.element, errors)" v-on="$listeners" :id="id" :name="id" :label="label")
   NotSupported(v-else :field="field")
 </template>
 
