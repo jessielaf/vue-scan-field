@@ -4,6 +4,8 @@ Automatically generate forms and validation based on your backend models
 
 This module goes hand in hand with [Django scan models](https://github.com/jessielaf/django-scan-models).
 
+> `vue-scan-field` now works with `vuetify` and `quasar`
+
 ## Install
 
 ```shell script
@@ -23,8 +25,25 @@ You can install the vue app like:
 import Vue from 'vue'
 import ScanField from 'vue-scan-field'
 
-Vue.use(ScanField)
+Vue.use(ScanField, { framework: 'vuetify' })
 ```
+
+#### Framework
+
+The default framework is `vuetify`. This if for backwards compatibility. We will remove the default in future so we recommend always using the framework option.
+
+Available options are (more will be added over time):
+- `vuetify`
+- `quasar`
+
+```js
+import Vue from 'vue'
+import ScanField from 'vue-scan-field'
+
+Vue.use(ScanField, { framework: 'quasar' })
+```
+
+#### Field name
 
 The default name for the field is `ScanField`. If you want to change this globally you can pass it as to the options.
 ```js
