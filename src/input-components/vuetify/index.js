@@ -1,18 +1,17 @@
-import { VAutocomplete, VCheckbox, VTextarea, VTextField } from 'vuetify/lib'
 import DatePicker from '@/input-components/vuetify/DatePicker'
 
 export default {
   components: {
-    scan_text_field: () => VTextField,
-    scan_textarea: () => VTextarea,
-    scan_checkbox: () => VCheckbox,
-    scan_select: () => VAutocomplete,
-    scan_date: () => DatePicker
+    scan_text_field: () => import('vuetify/lib/components/VTextField'),
+    scan_textarea: () => import('vuetify/lib/components/VTextarea'),
+    scan_checkbox: () => import('vuetify/lib/components/VCheckbox/VCheckbox'),
+    scan_select: () => import('vuetify/lib/components/VAutocomplete'),
+    scan_date: DatePicker
   },
-  getAttrs: (typeField, errors) => {
+  getAttrs: (typeField, validationAttrs) => {
     const attrs = {}
 
-    attrs.errorMessages = errors
+    attrs.errorMessages = validationAttrs.errors
 
     return attrs
   }
