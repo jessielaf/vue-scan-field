@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import VueCompositionApi from '@vue/composition-api'
-import VueScanField from '../src/main'
+import VueScanField from 'vue-scan-field/dist/vuetify'
 import Vuetify from 'vuetify/lib'
 import { extend } from 'vee-validate'
 import {

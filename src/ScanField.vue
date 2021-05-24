@@ -1,6 +1,6 @@
 <template lang="pug">
-  ValidationProvider(v-if="field.attributes.element" :name="label" :vid="id" :rules="field.validator || ''" v-slot="validationAttrs" slim)
-    component(:is="'scan_' + field.attributes.element" v-bind="parse($attrs, field.attributes.element, validationAttrs)" v-on="$listeners" :id="id" :name="id" :label="label")
+  ValidationProvider(v-if="componentName" :name="label" :vid="id" :rules="field.validator || ''" v-slot="validationAttrs" slim)
+    component(:is="componentName" v-bind="parse($attrs, field.attributes.element, validationAttrs)" v-on="$listeners" :id="id" :name="id" :label="label")
   NotSupported(v-else :field="field")
 </template>
 
@@ -46,6 +46,13 @@ export default {
         ...attrs,
         ...this.$scanField.getAttrs(typeField, errors)
       }
+    }
+  },
+  computed: {
+    componentName() {
+      const name = (this.field.attributes.element || 'textField') + 'ScanField'
+
+      return name in this.$options.components ? name : ''
     }
   },
   created() {

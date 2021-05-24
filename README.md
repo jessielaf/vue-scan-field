@@ -23,9 +23,9 @@ yarn add vue-scan-field
 You can install the vue app like:
 ```js
 import Vue from 'vue'
-import ScanField from 'vue-scan-field'
+import ScanField from 'vue-scan-field/dist/vuetify'
 
-Vue.use(ScanField, { framework: 'vuetify' })
+Vue.use(ScanField)
 ```
 
 #### Framework
@@ -38,27 +38,21 @@ Available options are (more will be added over time):
 
 ```js
 import Vue from 'vue'
-import ScanField from 'vue-scan-field'
+import ScanField from 'vue-scan-field/dist/quasar'
 
-Vue.use(ScanField, { framework: 'quasar' })
+Vue.use(ScanField)
 ```
+
+> Do not import `vue-scan-field` directly. This functionality will be removed in future versions
 
 #### Field name
 
 The default name for the field is `ScanField`. If you want to change this globally you can pass it as to the options.
 ```js
 import Vue from 'vue'
-import ScanField from 'vue-scan-field'
+import ScanField from 'vue-scan-field/dist/vuetify'
 
 Vue.use(ScanField, { field: 'MyCustomField' })
-```
-
-#### Importing
-
-You can also directly import the component as such:
-
-```js
-import { ScanField } from 'vue-scan-field/ScanField'
 ```
 
 ### The component
