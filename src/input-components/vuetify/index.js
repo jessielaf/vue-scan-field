@@ -9,10 +9,10 @@ export default {
     selectScanField: VAutocomplete,
     dateScanField: DatePicker
   },
-  getAttrs: (typeField, validationAttrs) => {
+  getAttrs: (typeField, field, validationAttrs) => {
     const attrs = {}
 
-    attrs.errorMessages = validationAttrs.errors
+    attrs.errorMessages = validationAttrs.errorMessages
 
     return attrs
   }
