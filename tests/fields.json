@@ -66,11 +66,6 @@
       ]
     }
   },
-  "dateOfBirth": {
-    "attributes": {
-      "element": "date"
-    }
-  },
   "maxAmountOfHours": {
     "validator": {},
     "attributes": {

@@ -32,7 +32,6 @@ export default cliArguments => {
         include: '*/entryPoint.js',
         exclude: '*'
       }),
-      commonjs(),
       alias({
         entries: [
           {
@@ -48,6 +47,7 @@ export default cliArguments => {
           isProduction: true
         }
       }),
+      commonjs(),
       buble({
         objectAssign: 'Object.assign',
         transforms: {

@@ -1,5 +1,5 @@
 <template lang="pug">
-  div {{ field.attributes.element }} is not supported for the {{ $scanField.framework }} framework
+div {{ field.attributes.element }} is not supported for the {{ $scanField.framework }} framework
 </template>
 
 <script>

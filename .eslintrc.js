@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['plugin:vue/essential', 'eslint:recommended'],
+  extends: ['plugin:vue/vue3-essential', 'eslint:recommended'],
   rules: {
     quotes: ['error', 'single', { allowTemplateLiterals: true }],
     semi: ['error', 'never']
