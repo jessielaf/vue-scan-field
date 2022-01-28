@@ -29,7 +29,7 @@ export default cliArguments => {
     plugins: [
       jscc({
         values: { _FRAMEWORK: framework },
-        include: '*/entryPoint.js',
+        include: '*/frameworkMapping.js',
         exclude: '*'
       }),
       commonjs(),

@@ -7,11 +7,13 @@
 <script>
 import { ValidationProvider } from 'vee-validate'
 import NotSupported from '@/input-components/NotSupported'
+import frameworkMapping from '@/frameworkMapping'
 
 export default {
   components: {
     NotSupported,
-    ValidationProvider
+    ValidationProvider,
+    ...frameworkMapping.components
   },
   props: {
     id: {
@@ -53,7 +55,7 @@ export default {
     parse(attrs, errors) {
       return {
         ...attrs,
-        ...this.$scanField.getAttrs(this.field, this.parseInfo, errors)
+        ...frameworkMapping.getAttrs(this.field, this.parseInfo, errors)
       }
     }
   },
