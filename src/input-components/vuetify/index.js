@@ -9,10 +9,17 @@ export default {
     selectScanField: VAutocomplete,
     dateScanField: DatePicker
   },
-  getAttrs: (typeField, validationAttrs) => {
+  getAttrs: (field, parseInfo, validationAttrs) => {
     const attrs = {}
 
+    attrs.items = parseInfo.items
     attrs.errorMessages = validationAttrs.errors
+    if (parseInfo.items) {
+      attrs.items = parseInfo.items.map(element => ({
+        text: element.label,
+        value: element.value
+      }))
+    }
 
     return attrs
   }

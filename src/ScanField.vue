@@ -1,6 +1,6 @@
 <template lang="pug">
   ValidationProvider(v-if="componentName" :name="label" :vid="id" :rules="field.validator || ''" v-slot="validationAttrs" slim)
-    component(:is="componentName" v-bind="parse($attrs, field.attributes.element, validationAttrs)" v-on="$listeners" :id="id" :name="id" :label="label")
+    component(:is="componentName" :value="value" v-bind="parse($attrs, validationAttrs)" v-on="$listeners" :id="id" :name="id" :label="label")
   NotSupported(v-else :field="field")
 </template>
 
@@ -25,8 +25,15 @@ export default {
     label: {
       type: String,
       default: ''
+    },
+    value: {
+      type: null,
+      default: ''
     }
   },
+  data: () => ({
+    parseInfo: {}
+  }),
   methods: {
     calculate(field) {
       // Add items if it is a select and all the options are defined
@@ -35,16 +42,18 @@ export default {
         field.attributes.options &&
         field.validator.oneOf
       ) {
-        this.attrs.items = field.attributes.options.map((element, index) => ({
-          text: element,
-          value: this.field.validator.oneOf[index]
-        }))
+        this.parseInfo.items = field.attributes.options.map(
+          (element, index) => ({
+            label: element,
+            value: this.field.validator.oneOf[index]
+          })
+        )
       }
     },
-    parse(attrs, typeField, errors) {
+    parse(attrs, errors) {
       return {
         ...attrs,
-        ...this.$scanField.getAttrs(typeField, errors)
+        ...this.$scanField.getAttrs(this.field, this.parseInfo, errors)
       }
     }
   },

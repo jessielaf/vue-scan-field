@@ -6,6 +6,7 @@ import buble from '@rollup/plugin-buble'
 import alias from '@rollup/plugin-alias'
 import resolve from '@rollup/plugin-node-resolve'
 import jscc from 'rollup-plugin-jscc'
+import pug from 'rollup-plugin-pug'
 
 const customResolver = resolve({
   extensions: ['.mjs', '.js', '.vue', '.jsx', '.json', '.sass', '.scss', '.ts']
@@ -41,6 +42,7 @@ export default cliArguments => {
         ],
         customResolver
       }),
+      pug(),
       vue({
         template: {
           isProduction: true

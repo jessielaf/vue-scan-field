@@ -8,12 +8,18 @@ export default {
     selectScanField: QSelect,
     dateScanField: null
   },
-  getAttrs: (typeField, validationAttrs) => {
+  getAttrs: (field, parseInfo, validationAttrs) => {
     const attrs = {}
     attrs.errorMessage = validationAttrs.errors[0]
     attrs.error = validationAttrs.invalid && validationAttrs.validated
 
-    if (typeField === 'textarea') attrs.type = 'textarea'
+    if (field.attributes.element === 'textarea') attrs.type = 'textarea'
+
+    if (parseInfo.items) {
+      attrs.options = parseInfo.items
+      attrs.emitValue = true
+      attrs.mapOptions = true
+    }
 
     return attrs
   }

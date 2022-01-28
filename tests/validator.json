@@ -5,7 +5,6 @@
       "max": 150
     },
     "attributes": {
-      "element": "text_field"
     }
   },
   "isStaff": {
@@ -27,7 +26,6 @@
       "max": 30
     },
     "attributes": {
-      "element": "text_field"
     }
   },
   "lastName": {
@@ -36,7 +34,6 @@
       "max": 150
     },
     "attributes": {
-      "element": "text_field"
 
     }
   },
@@ -47,7 +44,6 @@
       "email": true
     },
     "attributes": {
-      "element": "text_field",
       "type": "email"
     }
   },
@@ -78,7 +74,6 @@
   "maxAmountOfHours": {
     "validator": {},
     "attributes": {
-      "element": "text_field",
       "type": "number"
     }
   },
